@@ -90,9 +90,9 @@
   }
 
   PostES5.prototype.editPost = function(name, text, date) {
-    this.authorName = name
-    this.postText = text
-    this.dateUpdate = date
+    this.authorName = name;
+    this.postText = text;
+    this.dateUpdate = date;
   }
 
   const firstPost = new AttachedPostES6(prompt("Введите свое имя"), prompt("введите текст поста"), new Date())
