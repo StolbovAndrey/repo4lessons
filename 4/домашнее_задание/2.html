@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Обязательное задание.
+
+Необходимо данное задание выполнить в es5 стиле и в es6 стиле.
+Необходимо создать функцию-конструктор/класс для поста в социальной сети.
+Названия: `PostES5` для es5 стиля и `PostES6` для es6 стиля.
+Пост должен хранить:
+1. Автора поста (имени достаточно).
+2. Текст поста.
+3. Дату и время последнего изменения поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Каждому экземпляру объекта должен быть доступен метод `edit`, который будет
+менять текст поста.
+
+---
+
+Необходимо создать функцию-конструктор/класс для закрепленного поста в
+социальной сети.
+Названия: `AttachedPostES5` для es5 стиля и `AttachedPostES6` для es6 стиля.
+Закрепленный пост должен наследоваться от обычного поста.
+Данные автора поста и текст поста необходимо передавать при создании
+экземпляра объекта.
+Закрепленный пост должен иметь свойство `highlighted`, в котором по умолчанию
+будет лежать значение false (это свойство будет обозначать, будет ли наш
+закрепленный пост подсвечен).
+У экземпляров объекта закрепленного поста должен быть метод с названием
+`makeTextHighlighted`, который сделает так, чтобы наш пост стал подсвеченным
+(будет менять свойство `highlighted`).
+
+---
+
+Подсказки:
+1. Задание сложное, советую делать по аналогии с примером на онлайн-занятии.
+2. Обратите внимание что пост хранит "дату и время последнего изменения
+поста", это значит что если пост кто-то изменит (например вызовет какой-то
+метод, который изменит что-то в посте), дата и время последнего изменения
+поста также должна измениться.
+3. Выполняйте все по порядку, не стоит пытаться сделать все сразу, иначе можно
+что-нибудь пропустить.
+4. Если непонятно условие - задайте вопрос.
+-->
+<script>
+  "use strict";
+  /*
+    Класс postES6 и attachedPostES6. 
+    у объекта есть имя автора, текст поста, дата обновления.
+    у медота editPost 3 параметра на вход - имя нового автора, текст поста, дата обновления. все они передаются по завершению ввода. 
+
+    подсвеченный пост - наследуется от postES6, со своим методом makeTextHighlighted. Изначально создал через конструктор, но потом когда проверял себя - подсмотрел.
+  */
+
+  class PostES6 {
+
+    constructor(name, text, date) {
+      this.authorName = name;
+      this.postText = text;
+      this.dateUpdate = date;
+    }
+
+    editPost(name, text, date){
+      this.authorName = name;
+      this.postText = text;
+      this.dateUpdate = date;
+    }
+  }
+
+  class AttachedPostES6 extends PostES6 {
+    
+    highlighted = false;
+
+    makeTextHighlighted() {
+      this.highlighted = true;
+    }
+
+  }
+
+  function PostES5 (name, text, date) {
+
+      this.authorName = name;
+      this.postText = text;
+      this.dateUpdate = date;
+  }
+
+  PostES5.prototype.editPost = function(name, text, date) {
+    this.authorName = name
+    this.postText = text
+    this.dateUpdate = date
+  }
+
+  const firstPost = new AttachedPostES6(prompt("Введите свое имя"), prompt("введите текст поста"), new Date())
+  console.log(firstPost.authorName, firstPost.postText, firstPost.dateUpdate)
+
+  const post2 = new PostES6(prompt("Введите свое имя"), prompt("введите текст поста"), new Date())
+  console.log(post2.authorName, post2.postText, post2.dateUpdate)
+
+  firstPost.editPost(prompt("Введите свое имя"), prompt("введите текст поста"), new Date())
+  console.log(firstPost.authorName, firstPost.postText, firstPost.dateUpdate)
+  console.log(post2.authorName, post2.postText, post2.dateUpdate)
+  
+  firstPost.makeTextHighlighted()
+  console.log(firstPost.highlighted)
+
+
+  // Здесь пишем решение, данный комментарий необходимо стереть.
+</script>
+</body>
+</html>
