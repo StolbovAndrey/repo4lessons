@@ -31,22 +31,33 @@
 <script>
   "use strict";
 
+  
   /*
   1. Найти по id, используя getElementById, элемент с id равным "super_link" и
   вывести этот элемент в консоль.
    */
+   console.log(document.getElementById("super_link"));
 
-
+  
   /*
   2. Внутри всех элементов на странице, которые имеют класс "card-link",
   поменяйте текст внутри элемента на "ссылка".
    */
+   const lists = document.querySelectorAll('.card-link');
+  console.log(lists);
 
+  lists.forEach(el => el.textContent = "ссылка");
 
+  
   /*
   3. Найти все элементы на странице с классом "card-link", которые лежат в
   элементе с классом "card-body" и вывести полученную коллекцию в консоль.
+
+  ______________
+  Разве это коллекция? вроде же список NodeList. я что то делаю не так?
    */
+   const elements = document.querySelectorAll(".card-body .card-link");
+  console.log(elements);
 
 
   /*
@@ -54,16 +65,22 @@
   data-number со значением 50 и вывести его в консоль.
    */
 
+   const firstElement = document.querySelector('[data-number="50"]')
+   console.log(firstElement)
+
 
   /*
   5. Выведите содержимое тега title в консоль.
    */
 
+   console.log(document.title);
 
   /*
   6. Получите элемент с классом "card-title" и выведите его родительский узел
   в консоль.
    */
+
+   document.getElementsByClassName('.card-title')
 
 
   /*
@@ -71,10 +88,16 @@
   тег в начало элемента, который имеет класс "card".
    */
 
+   const p = document.createElement('p')
+   p.textContent = ('hello')
+   document.querySelector('.card').prepend(p)
+
 
   /*
   8. Удалите тег h6 на странице.
    */
+
+   document.querySelector('h6').remove()
 
 
 </script>

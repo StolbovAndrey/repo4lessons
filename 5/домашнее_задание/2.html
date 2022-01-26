@@ -34,6 +34,9 @@
   свойство classList у элементов.
    */
 
+   const sDropdown = document.querySelectorAll('.dropdown-item');
+   sDropdown.forEach(el => el.classList.add("super-dropdown"));
+
 
   /*
   2. У элемента с классом btn необходимо убрать класс "btn-secondary", если он
@@ -41,23 +44,37 @@
   не было.
    */
 
+  document.querySelector('.btn').classList.toggle('.btn-secondary');
 
   /*
   3. Необходимо удалить класс "dropdown-menu" у элемента, у которого
   присутствует класс "menu".
    */
 
+  document.querySelector('.menu').classList.remove('dropdown-menu');
 
   /*
   4. Используя метод insertAdjacentHTML добавьте после div'a с классом
   "dropdown" следующую разметку:
     <a href="#">link</a>
    */
+  const element = '<a href="#">link</a>';
+  const peremennaya = document.querySelector('div.dropdown');
+  peremennaya.insertAdjacentHTML('afterend', '<a href="#">link</a>');
+  
+  // peremennaya.insertAdjacentElement('afterend', element);
+  /* почему пример выше не работает? не могу разобраться. если через insert...HTML - все работает, но если через Element - то нет.
+  а еще я не могу вставить на место '<a href="#">link</a>' переменную элемент. если вставить туда переменную - то опять же не работает.
+  метод принимает только строку в чистом виде? переменную внутри которой строка не берет?
+  есть вариант как вставить в insertAdjacentHTML на место строки переменную?
+  */
 
 
   /*
   5. У элемента с id "dropdownMenuButton" замените id на "superDropdown".
    */
+
+  document.getElementById('dropdownMenuButton').id = 'superDropdown';
 
 
   /*
@@ -65,11 +82,15 @@
   атрибут "aria-labelledby" равный "dropdownMenuButton" используя dataset.
    */
 
+  const exp = document.querySelector('[aria-labelledby = "dropdownMenuButton"]')
+  exp.setAttribute('data-dd', '3')
+     
 
   /*
   7. Удалите атрибут type у элемента с классом "dropdown-toggle".
    */
 
+   document.querySelector('.dropdown-toggle').removeAttribute('type');
 
   /*
   8. Выведите в консоль все имеющиеся атрибуты и их значения тега у которого
@@ -78,7 +99,17 @@
   Атрибут "class" содержит значение "btn btn-secondary dropdown-toggle"
    */
 
+   const attributes = document
+    .querySelector('.btn.dropdown-toggle')
+    .attributes;
+  
+  attributes.forEach(attribute => console.log(`Атрибут "${attribute.name}" = "${attribute.value}"`))
 
+  /*
+  С заданием не справился, не понимаю почему такой формат записи не подходит. можно ли перебрать через forEach?
+  */
+
+  
 </script>
 </body>
 </html>

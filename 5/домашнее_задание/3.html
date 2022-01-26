@@ -56,13 +56,30 @@
   1. Необходимо вывести сообщение в консоль "все теги прогрузились", когда все
   теги будут созданы браузером.
   */
-
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("все теги прогрузились");
+  });
+  /*
+  вопрос - в данной задаче отследили момент когда загрузили HTML без внешних ресурсов. 
+  как можно отследить момент начала загрузки html?
+  */
 
   /*
   2. Необходимо вывести сообщение в консоль "страница загрузилась", когда все
   ресурсы страницы будут загружены.
   */
 
+  window.addEventListener("load", () => {
+    console.log("Страница загрузилась");
+  });
+
+  window.onload = () => {
+    console.log("123")
+  }
+
+  /*
+  вроде как и тот и тот вариант работает. 
+  */
 
   /*
   3. При клике на какой-либо тег на странице в консоль должно выводиться
@@ -74,11 +91,18 @@
   Необходимо использовать делегирование.
   */
 
+  window.addEventListener('click', () => {
+
+  })
+  // разобрался по подсказке..
 
   /*
   4. Сделайте, чтобы при наведении на textarea в консоли появлялось сообщение:
   "Вы навели на textarea."
    */
+
+   document.querySelector('textarea').addEventListener('mouseover', () => console.log("навели на textarea"))
+   document.querySelector('textarea').addEventListener('mouseout', () => console.log("ушли с textarea"))
 
 
   /*
@@ -88,6 +112,13 @@
   Если клик был не по кнопке, то ничего выводить не нужно.
   Необходимо использовать делегирование.
    */
+
+   document.querySelector('ul').addEventListener('click', event => {
+    if (event.target.tagName !== "BUTTON") {
+      return;
+    }
+    console.log(event.target.textContent);
+  });
 
 
   /*
@@ -100,6 +131,16 @@
   /*
   7. С помощью JS необходимо изменить цвет заднего фона каждого второго тега li.
    */
+  
+  document
+    .querySelectorALL('li:nth-child(2n)')
+    .forEach(el => el.style.backgroundColor = 'red');
+
+  const example = document.querySelectorAll('li:nth-child(2n)')
+  example.forEach(element => element.style.backgroundColor = 'red');
+  
+  // почему не работает? запись идентична той, что в решении. ни 1 из них. 
+
 
 </script>
 </body>
