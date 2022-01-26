@@ -58,9 +58,9 @@
     if (!event.target.classList.contains('fa-star')) {
       return;
     }
-    let star = event.target
+    let star = event.target;
     do {
-      star.classList.remove('golden')
+      star.classList.remove('golden');
       star = star.previousElementSibling;
     } while (star);
   })
